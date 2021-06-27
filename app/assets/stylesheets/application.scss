@@ -18,12 +18,20 @@
   margin: 0 20px;
 }
 
+.nav-item {
+  color: white;
+}
 .mx-auto {
   display: flex;
   justify-content: center;
   margin: 0 auto;
 }
-
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
 .top {
   text-align: center;
 }

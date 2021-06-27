@@ -23,6 +23,7 @@ end
 def index
   @books = Book.all
   @book = Book.new
+  @users =current_user
 end
 
 def show
