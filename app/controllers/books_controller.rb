@@ -12,6 +12,7 @@ def create
   flash[:notice] = 'Book was successfully created.'
   else
   @books = Book.all
+  @users = current_user
   render :index
   end
 end
@@ -23,13 +24,10 @@ end
 def index
   @books = Book.all
   @book = Book.new
-  @users =current_user
+  @users = current_user
 end
 
-def show
-  @book = Book.find(params[:id])
 
-end
 
 def update
   @book = Book.find(params[:id])
@@ -43,10 +41,9 @@ end
 
 
 def destroy
-  book = Book.find(params[:id])
-  book.destroy
+  @book = Book.find(params[:id])
+  @book.destroy
   redirect_to books_path
-
 end
 
 private
