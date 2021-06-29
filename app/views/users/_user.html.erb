@@ -1,5 +1,12 @@
 <div class="col-md-3">
-    <h1>User info</h1>
+    <% if new_book.errors.any? %>
+            <%= new_book.errors.count %>error prohibited this obj from being saved:
+            <% new_book.errors.full_messages.each do |message| %>
+                <%= message %>
+            <% end %>
+    <% end %>
+    <table class="table table-striped">
+     <h1>User info</h1>
     <table class="table table-striped">
     <%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
     <thead>
@@ -18,8 +25,8 @@
 
 
     <%= form_with model: new_book, url:'/books', local: true do |f| %>
-        <h1>New Book</h1>   
-        <table class="table table-striped">
+        <h1>New book</h1>
+       
             <h4>Title</h4><br/>
             <%= f.text_area :title %>
             <h4>Opinion</h4><br/>

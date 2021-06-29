@@ -1,5 +1,11 @@
 <h2>User info</h2>
-<%= form_with model:@user, local:true do |f| %>
+<% if @user.errors.any? %>
+  <%= @user.errors.count %>error prohibited this obj from being saved:
+  <% @user.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
+<%= form_with model:@user, url: user_path(@user), local:true do |f| %>
   <div><label for="inputName">Name</label></div>
   <div><%= f.text_field :name, autofocus: true, id:"inputName" %></div>
   
@@ -11,13 +17,3 @@
   
   <div><%= f.submit "Update User" %></div>
 <% end %>
-
-<!--<h4>Name</h4>-->
-<!--< %= f.text_area :name %>-->
-<!--<h4>Image</h4>-->
-<!--< %= f.attachment_field :image %>-->
-<!--<h4>Introduction</h4>-->
-<!--< %= f.text_area :introduction %>-->
-
-<!--< %= f.submit 'Update User' %>-->
-<!--< % end %>-->
